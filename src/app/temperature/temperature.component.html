@@ -3,18 +3,17 @@
     <form [formGroup]='temperatureForm' class="temp-form">
         <div class="form-group">
             <label> Insert Temperature</label>
-            <input [class.is-invalid]="insert.invalid &&
-            insert.touched" formControlName='insert' type="number" class="form-control">
-            <!-- <small [class.d-none]="insert.valid || insert.untouched" class="text-danger">Word 1 is required</small> -->
-            <div *ngIf="insert.invalid && insert.touched">
-                <small *ngIf="insert.errors?.required" class='text-danger'>
+            <input [class.is-invalid]="temperatureForm.get('insert').invalid &&
+            temperatureForm.get('insert').touched" formControlName='insert' type="number" class="form-control">
+            <div *ngIf="temperatureForm.get('insert').invalid && temperatureForm.get('insert').touched">
+                <small *ngIf="temperatureForm.get('insert').errors?.required" class='text-danger'>
                     Field is required
                 </small>
 
-                <small *ngIf="insert.errors?.min" class='text-danger'>
+                <small *ngIf="temperatureForm.get('insert').errors?.min" class='text-danger'>
                     Must be atleast 1
                 </small>
-                <small *ngIf="insert.errors?.max" class='text-danger'>
+                <small *ngIf="temperatureForm.get('insert').errors?.max" class='text-danger'>
                     Must enter max of 150
                 </small>
             </div>
@@ -23,18 +22,6 @@
             <button [disabled]="!temperatureForm.valid" (click)="insertValue()" type="button"
                 class='btn btn-primary '>Insert
                 Temperature</button>
-            <div class="temp-buttons">
-                <button type="button" class='btn btn-secondary' (click)=' getMin()'> Get Min </button>
-            </div>
-            <div class="temp-buttons">
-                <button type="button" class='btn btn-secondary' (click)=' getMax()'> Get Max </button>
-            </div>
-            <div class="temp-buttons">
-                <button type="button" class='btn btn-secondary' (click)=' getMean()'> Get Mean </button>
-            </div>
-            <div class="temp-buttons">
-                <button type="button" class='btn btn-secondary' (click)=' getMode()'> Get Mode </button>
-            </div>
             <div class="temp-buttons">
                 <button type="reset" class='btn btn-outline-dark' (click)=' reset()'> Reset </button>
             </div>

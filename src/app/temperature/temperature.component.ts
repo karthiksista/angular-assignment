@@ -1,78 +1,80 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
   styleUrls: ['./temperature.component.css']
 })
-export class TemperatureComponent implements OnInit {
+export class TemperatureComponent {
   maxTemp: number;
   minTemp: number;
   total: any;
   mean: number;
   mode: any[];
-  temperatureValues = []
-
-  get insert() {
-    return this.temperatureForm.get('insert')
-  }
-
+  temperatureValues = [];
+  temperatureForm: FormGroup;
   constructor(private fb: FormBuilder) {
+    this.temperatureForm = this.fb.group({
+      insert: [, [Validators.required, Validators.min(1), Validators.max(150)]]
+    });
   }
-  ngOnInit() {
-
-  }
-  temperatureForm = this.fb.group({
-    insert: [, [Validators.required, Validators.min(1), Validators.max(150)]]
-  })
 
   insertValue(): void {
-    this.temperatureValues.push(this.temperatureForm.value.insert)
-    this.insert.reset();
+    this.temperatureValues.push(this.temperatureForm.value.insert);
+    this.temperatureForm.get('insert').reset();
+    this.maxTemp = Math.max(...this.temperatureValues);
+    this.minTemp = Math.min(...this.temperatureValues);
+    this.calculateMode();
+    this.calculateMean();
   }
-  getMax() {
+  get_max() {
+    return this.maxTemp;
+  }
+  get_min() {
+    return this.maxTemp;
+  }
+  get_mode() {
+    return this.mode;
+  }
+  get_mean() {
+    return this.mean;
+  }
 
-    this.temperatureValues.length ? this.maxTemp = Math.max(...this.temperatureValues) : ''
-  }
-  getMin() {
-    this.temperatureValues.length ? this.minTemp = Math.min(...this.temperatureValues) : ''
-  }
-  getMode() {
+  calculateMode() {
     if (this.temperatureValues.length) {
-      let NumberFrequency = {}
-      for (let val of this.temperatureValues) {
+      const NumberFrequency = {};
+      for (const val of this.temperatureValues) {
         if (NumberFrequency[val]) {
-          NumberFrequency[val] += 1
+          NumberFrequency[val] += 1;
         } else {
-          NumberFrequency[val] = 1
+          NumberFrequency[val] = 1;
         }
       }
       let maxFrequency = 1;
-      let maxFrequencyKeyList = []
-      for (let key in NumberFrequency) {
-        if (maxFrequency < NumberFrequency[key]) {
-          maxFrequencyKeyList = [Number(key)]
-          maxFrequency = NumberFrequency[key]
-        } else if (maxFrequency == NumberFrequency[key]) {
-          maxFrequencyKeyList.push(Number(key))
+      let maxFrequencyKeyList = [];
+      for (const key in NumberFrequency) {
+        if (maxFrequency <= NumberFrequency[key]) {
+          maxFrequencyKeyList = [Number(key)];
+          maxFrequency = NumberFrequency[key];
         }
       }
-      this.mode = maxFrequencyKeyList
+      this.mode = maxFrequencyKeyList;
     }
   }
 
-  getMean() {
+  calculateMean() {
     if (this.temperatureValues.length) {
-      let total = this.temperatureValues.reduce((acc, curr) => acc += curr)
-      this.mean = total / this.temperatureValues.length
+      const total = this.temperatureValues.reduce((acc, curr) => acc += curr);
+      this.mean = total / this.temperatureValues.length;
     }
   }
+
   reset() {
-    this.temperatureValues = []
+    this.temperatureValues = [];
     this.mean = null;
     this.minTemp = null;
     this.maxTemp = null;
-    this.mode = []
+    this.mode = [];
   }
 }

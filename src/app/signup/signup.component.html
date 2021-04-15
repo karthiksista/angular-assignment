@@ -3,60 +3,62 @@
     <form [formGroup]='registrationForm' class='singup-form'>
         <div class="form-group">
             <label>First Name*</label>
-            <input [class.is-invalid]="fname.invalid &&
-            fname.touched" formControlName='fname' type="text" class="form-control" pattern="[a-zA-Z]+">
+            <input [class.is-invalid]="registrationForm.get('fname').invalid &&
+            registrationForm.get('fname').touched" formControlName='fname' type="text" class="form-control"
+                pattern="[a-zA-Z]+">
             <!-- <small [class.d-none]="fname.valid || fname.untouched" class="text-danger">First Name is required</small> -->
-            <div *ngIf="fname.invalid && fname.touched">
-                <small *ngIf="fname.errors?.required" class='text-danger'>
+            <div *ngIf="registrationForm.get('fname').invalid && registrationForm.get('fname').touched">
+                <small *ngIf="registrationForm.get('fname').errors?.required" class='text-danger'>
                     First Name is required
                 </small>
-                <small *ngIf="fname.errors?.minlength" class='text-danger'>
+                <small *ngIf="registrationForm.get('fname').errors?.minlength" class='text-danger'>
                     First Name must be a atleast 5 characters
                 </small>
-                <small *ngIf="fname.errors?.pattern" class='text-danger'>
+                <small *ngIf="registrationForm.get('fname').errors?.pattern" class='text-danger'>
                     First Name must contain only characters
                 </small>
             </div>
         </div>
         <div class="form-group">
             <label>Last Name*</label>
-            <input [class.is-invalid]="lname.invalid &&
-            lname.touched" formControlName='lname' type="text" class="form-control">
-            <div *ngIf="lname.invalid && lname.touched">
-                <small *ngIf="lname.errors?.required" class='text-danger'>
+            <input [class.is-invalid]="registrationForm.get('lname').invalid &&
+            registrationForm.get('lname').touched" formControlName='lname' type="text" class="form-control">
+            <div *ngIf="registrationForm.get('lname').invalid && registrationForm.get('lname').touched">
+                <small *ngIf="registrationForm.get('lname').errors?.required" class='text-danger'>
                     Last Name is required
                 </small>
-                <small *ngIf="lname.errors?.minlength" class='text-danger'>
+                <small *ngIf="registrationForm.get('lname').errors?.minlength" class='text-danger'>
                     Last Name must be a atleast 5 characters
                 </small>
-                <small *ngIf="lname.errors?.pattern" class='text-danger'>
+                <small *ngIf="registrationForm.get('lname').errors?.pattern" class='text-danger'>
                     Last Name must contain only characters
                 </small>
             </div>
         </div>
         <div class="form-group">
             <label>Phone Number*</label>
-            <input [class.is-invalid]="phoneNumber.invalid &&
-            phoneNumber.touched" formControlName='phoneNumber' type="number" class="form-control">
-            <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
-                <small *ngIf="phoneNumber.errors?.required" class='text-danger'>
+            <input [class.is-invalid]="registrationForm.get('phoneNumber').invalid &&
+            registrationForm.get('phoneNumber').touched" formControlName='phoneNumber' type="number"
+                class="form-control">
+            <div *ngIf="registrationForm.get('phoneNumber').invalid && registrationForm.get('phoneNumber').touched">
+                <small *ngIf="registrationForm.get('phoneNumber').errors?.required" class='text-danger'>
                     Phone Number is required
                 </small>
-                <small *ngIf="phoneNumber.errors?.pattern" class='text-danger'>
+                <small *ngIf="registrationForm.get('phoneNumber').errors?.pattern" class='text-danger'>
                     Phone Number cannot exceed 10 numbers
                 </small>
             </div>
         </div>
         <div class="form-group">
             <label>Country*</label>
-            <select [class.is-invalid]="country.invalid &&
-            country.touched" formControlName='country' formControlName='country' type="" class="form-control">
+            <select [class.is-invalid]="registrationForm.get('country').invalid &&
+            registrationForm.get('country').touched" formControlName='country' type="" class="form-control">
                 <option> </option>
                 <option>India</option>
                 <option>USA</option>
             </select>
-            <div *ngIf="country.invalid && country.touched">
-                <small *ngIf="country.errors?.required" class='text-danger'>
+            <div *ngIf="registrationForm.get('country').invalid && registrationForm.get('country').touched">
+                <small *ngIf="registrationForm.get('country').errors?.required" class='text-danger'>
                     Country is required
                 </small>
             </div>

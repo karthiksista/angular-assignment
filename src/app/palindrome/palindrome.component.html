@@ -3,30 +3,30 @@
     <form [formGroup]='anagramForm' class="anagram-form">
         <div class="form-group">
             <label> Word 1</label>
-            <input [class.is-invalid]="word1.invalid &&
-            word1.touched" formControlName='word1' type="text" class="form-control" pattern="[a-zA-Z]+">
-            <!-- <small [class.d-none]="word1.valid || word1.untouched" class="text-danger">Word 1 is required</small> -->
-            <div *ngIf="word1.invalid && word1.touched">
-                <small *ngIf="word1.errors?.required" class='text-danger'>
+            <input [class.is-invalid]="anagramForm.get('word1').invalid &&
+            anagramForm.get('word1').touched" formControlName='word1' type="text" class="form-control"
+                pattern="[a-zA-Z]+">
+            <div *ngIf="anagramForm.get('word1').invalid && anagramForm.get('word1').touched">
+                <small *ngIf="anagramForm.get('word1').errors?.required" class='text-danger'>
                     Word 1 is required
                 </small>
 
-                <small *ngIf="word1.errors?.pattern" class='text-danger'>
+                <small *ngIf="anagramForm.get('word1').errors?.pattern" class='text-danger'>
                     Word 1 must contain only characters
                 </small>
             </div>
         </div>
         <div class="form-group">
             <label> Word 2</label>
-            <input [class.is-invalid]="word2.invalid &&
-            word2.touched" formControlName='word2' type="text" class="form-control" pattern="[a-zA-Z]+">
-            <!-- <small [class.d-none]="word2.valid || word2.untouched" class="text-danger">Word 1 is required</small> -->
-            <div *ngIf="word2.invalid && word2.touched">
-                <small *ngIf="word2.errors?.required" class='text-danger'>
+            <input [class.is-invalid]="anagramForm.get('word2').invalid &&
+            anagramForm.get('word2').touched" formControlName='word2' type="text" class="form-control"
+                pattern="[a-zA-Z]+">
+            <div *ngIf="anagramForm.get('word2').invalid && anagramForm.get('word2').touched">
+                <small *ngIf="anagramForm.get('word2').errors?.required" class='text-danger'>
                     Word 2 is required
                 </small>
 
-                <small *ngIf="word2.errors?.pattern" class='text-danger'>
+                <small *ngIf="anagramForm.get('word2').errors?.pattern" class='text-danger'>
                     Word 2 must contain only characters
                 </small>
             </div>
