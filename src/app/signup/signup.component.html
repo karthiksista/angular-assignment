@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <h2>Registration Form</h2>
+    <form [formGroup]='registrationForm'>
+        <div class="form-group">
+            <label>First Name*</label>
+            <input [class.is-invalid]="fname.invalid &&
+            fname.touched" formControlName='fname' type="text" class="form-control" pattern="[a-zA-Z]+">
+            <!-- <small [class.d-none]="fname.valid || fname.untouched" class="text-danger">First Name is required</small> -->
+            <div *ngIf="fname.invalid && fname.touched">
+                <small *ngIf="fname.errors?.required" class='text-danger'>
+                    First Name is required
+                </small>
+                <small *ngIf="fname.errors?.minlength" class='text-danger'>
+                    First Name must be a atleast 5 characters
+                </small>
+                <small *ngIf="fname.errors?.pattern" class='text-danger'>
+                    First Name must contain only characters
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Last Name*</label>
+            <input [class.is-invalid]="lname.invalid &&
+            lname.touched" formControlName='lname' type="text" class="form-control">
+            <div *ngIf="lname.invalid && lname.touched">
+                <small *ngIf="lname.errors?.required" class='text-danger'>
+                    Last Name is required
+                </small>
+                <small *ngIf="lname.errors?.minlength" class='text-danger'>
+                    Last Name must be a atleast 5 characters
+                </small>
+                <small *ngIf="lname.errors?.pattern" class='text-danger'>
+                    Last Name must contain only characters
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Phone Number*</label>
+            <input [class.is-invalid]="phoneNumber.invalid &&
+            phoneNumber.touched" formControlName='phoneNumber' type="number" class="form-control">
+            <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                <small *ngIf="phoneNumber.errors?.required" class='text-danger'>
+                    Phone Number is required
+                </small>
+                <small *ngIf="phoneNumber.errors?.pattern" class='text-danger'>
+                    Phone Number cannot exceed 10 numbers
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Country*</label>
+            <select [class.is-invalid]="country.invalid &&
+            country.touched" formControlName='country' formControlName='country' type="" class="form-control">
+                <option>India</option>
+                <option>USA</option>
+            </select>
+            <div *ngIf="country.invalid && country.touched">
+                <small *ngIf="country.errors?.required" class='text-danger'>
+                    Country is required
+                </small>
+            </div>
+        </div>
+        <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary"
+            routerLink='/thankyou'>Register</button>
+
+    </form>
+</div>
