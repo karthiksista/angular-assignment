@@ -22,9 +22,8 @@ export class PalindromeComponent implements OnInit {
     word2: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
   })
   ngOnInit() {
-    console.log(this.anagramForm)
   }
-  submit() {
+  submitVal() {
     if (this.anagramForm.valid) {
       this.check(this.anagramForm.value.word1, this.anagramForm.value.word2);
       this.anagramForm.reset();

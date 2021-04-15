@@ -7,6 +7,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  registered: boolean;
+  registeredMessage: string;
 
   get fname() {
     return this.registrationForm.get('fname')
@@ -26,9 +28,16 @@ export class SignupComponent implements OnInit {
     fname: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z]+')]],
     lname: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z]+')]],
     phoneNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-    country: ['', Validators.required]
+    country: [, Validators.required]
   })
   ngOnInit() {
-    console.log(this.registrationForm)
+  }
+  register() {
+    this.registered = true
+    this.registeredMessage = 'Your account has been created';
+  }
+  reset() {
+    this.registered = false
+    this.registrationForm.reset()
   }
 }

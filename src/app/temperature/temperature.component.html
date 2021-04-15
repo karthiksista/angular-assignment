@@ -1,1 +1,52 @@
-<p>temperature works!</p>
+<div class="container-fluid">
+    <h2>Temperature Checker</h2>
+    <form [formGroup]='temperatureForm' class="temp-form">
+        <div class="form-group">
+            <label> Insert Temperature</label>
+            <input [class.is-invalid]="insert.invalid &&
+            insert.touched" formControlName='insert' type="number" class="form-control">
+            <!-- <small [class.d-none]="insert.valid || insert.untouched" class="text-danger">Word 1 is required</small> -->
+            <div *ngIf="insert.invalid && insert.touched">
+                <small *ngIf="insert.errors?.required" class='text-danger'>
+                    Field is required
+                </small>
+
+                <small *ngIf="insert.errors?.min" class='text-danger'>
+                    Must be atleast 1
+                </small>
+                <small *ngIf="insert.errors?.max" class='text-danger'>
+                    Must enter max of 150
+                </small>
+            </div>
+        </div>
+        <div class=buttons-div>
+            <button [disabled]="!temperatureForm.valid" (click)="insertValue()" type="button"
+                class='btn btn-primary '>Insert
+                Temperature</button>
+            <div class="temp-buttons">
+                <button type="button" class='btn btn-secondary' (click)=' getMin()'> Get Min </button>
+            </div>
+            <div class="temp-buttons">
+                <button type="button" class='btn btn-secondary' (click)=' getMax()'> Get Max </button>
+            </div>
+            <div class="temp-buttons">
+                <button type="button" class='btn btn-secondary' (click)=' getMean()'> Get Mean </button>
+            </div>
+            <div class="temp-buttons">
+                <button type="button" class='btn btn-secondary' (click)=' getMode()'> Get Mode </button>
+            </div>
+            <div class="temp-buttons">
+                <button type="reset" class='btn btn-outline-dark' (click)=' reset()'> Reset </button>
+            </div>
+
+        </div>
+
+    </form>
+    <pre>{{temperatureValues.length ? 'Values: '+ temperatureValues : ''  }}</pre>
+    <pre>
+            {{minTemp ? 'Min = '+ minTemp: '' }}
+            {{maxTemp ? 'Max = '+ maxTemp: '' }}
+            {{mean ? 'Mean = '+ mean.toFixed(2): '' }}
+            {{mode && mode.length ? 'Mode = '+ mode: '' }}
+        </pre>
+</div>

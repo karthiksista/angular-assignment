@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h2>Registration Form</h2>
-    <form [formGroup]='registrationForm'>
+    <form [formGroup]='registrationForm' class='singup-form'>
         <div class="form-group">
             <label>First Name*</label>
             <input [class.is-invalid]="fname.invalid &&
@@ -51,6 +51,7 @@
             <label>Country*</label>
             <select [class.is-invalid]="country.invalid &&
             country.touched" formControlName='country' formControlName='country' type="" class="form-control">
+                <option> </option>
                 <option>India</option>
                 <option>USA</option>
             </select>
@@ -61,7 +62,8 @@
             </div>
         </div>
         <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary"
-            routerLink='/thankyou'>Register</button>
-
+            (click)='register()'>Register</button>
+        <button type="reset" class="btn btn-secondary mt-2" (click)='reset()'>Reset</button>
     </form>
+    {{registered ? registeredMessage : ''}}
 </div>

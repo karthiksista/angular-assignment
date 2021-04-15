@@ -1,0 +1,23 @@
+.temp-buttons {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  width: 100px;
+  justify-content: center;
+}
+.temp-form-form {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.buttons-div {
+  display: flex;
+}

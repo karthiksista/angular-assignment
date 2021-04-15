@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SignupComponent } from './signup.component';
 
 describe('SignupComponent', () => {
@@ -31,6 +32,11 @@ describe('SignupComponent', () => {
     const h2 = title.querySelector('h2')
     expect(h2.textContent).toEqual('Registration Form')
   });
+  // it('should have button in Registration Form', () => {
+  //   const ele: HTMLElement = fixture.nativeElement;
+  //   const registerButton = ele.querySelector('button')
+  //   // expect(registerButton.textContent).toEqual('Register')
+  // });
 
   // FIRST NAME VALIDATIONS
 

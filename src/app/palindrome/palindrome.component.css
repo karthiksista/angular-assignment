@@ -1,0 +1,13 @@
+.anagram-form {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}

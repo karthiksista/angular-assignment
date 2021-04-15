@@ -73,13 +73,6 @@ describe('PalindromeComponent', () => {
     const button = title.querySelector('button')
     expect(button.textContent).toEqual('Check Anagram')
   });
-  it('should', fakeAsync(() => {
-    spyOn(component, 'check');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
-    button.click();
-    tick();
-    expect(component.check).toHaveBeenCalled();
-  }));
   it('should pass anagram check', () => {
     expect(component.check('stop', 'tops')).toBe('Anagram');
   });
