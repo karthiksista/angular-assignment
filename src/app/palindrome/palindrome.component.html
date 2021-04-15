@@ -1,1 +1,15 @@
-<p>palindrome works!</p>
+<div class="container-fluid">
+    <h2>Anagram Checker</h2>
+    <form [formGroup]='anagramForm'>
+        <div class="form-group">
+            <label> Word 1</label>
+            <input type='text' class="form-control" formControlName="word1">
+        </div>
+        <div class="form-group">
+            <label> Word 2</label>
+            <input type='text' class="form-control" formControlName="word2">
+        </div>
+        <h5>{{result}}</h5>
+        <button (click)="check()" type="button" class='btn btn-primary'>Check Anagram</button>
+    </form>
+</div>
