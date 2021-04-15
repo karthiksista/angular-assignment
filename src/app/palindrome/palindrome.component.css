@@ -11,3 +11,8 @@
   align-items: center;
   margin-top: 100px;
 }
+.result {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

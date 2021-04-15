@@ -31,7 +31,8 @@
                 </small>
             </div>
         </div>
-        <h5>{{result}}</h5>
-        <button (click)='submitVal()' type="submit" class='btn btn-primary'>Check Anagram</button>
+        <button [disabled]='!anagramForm.valid' (click)='submitVal()' type="submit" class='btn btn-primary'>Check
+            Anagram</button>
+        <h5 class="result">{{result}}</h5>
     </form>
 </div>
